@@ -123,17 +123,23 @@ int main(void)
 
 
 
-    float position[6] = {
+    float position[] = {
         -0.5f,-0.5f,
-        0.0f, 0.5f,
-        0.5f, -0.5f
+        0.5f, -0.5f,
+        0.5f, 0.5f,
+
+        0.5f, 0.5f,
+        -0.5f, 0.5f,
+       -0.5f,-0.5f
     };
+    
+
 
     unsigned int buffer;
     //顶点缓冲区
     glGenBuffers(1, &buffer);
     glBindBuffer(GL_ARRAY_BUFFER, buffer);
-    glBufferData(GL_ARRAY_BUFFER, 6 * sizeof(float), position, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER,  6 * 2 * sizeof(float), position, GL_STATIC_DRAW);
 
     //顶点属性
     glEnableVertexAttribArray(0);
@@ -183,7 +189,7 @@ int main(void)
         glEnd();*/
 
         //从0 取3 个 
-        glDrawArrays(GL_TRIANGLES, 0, 3);
+        glDrawArrays(GL_TRIANGLES, 0, 6);
 
         /* Swap front and back buffers */
         glfwSwapBuffers(window);
